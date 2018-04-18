@@ -22,3 +22,37 @@ app.get('/',function(req,res){
     });
 });
 
+
+			app.controller('loginController', ($scope) =>{
+				
+
+				$scope.entrar = (login, senha) => {
+					if(login == "raphaml" && senha == "123"){
+						open('perfil.html', '_self');
+					}else{
+						alert('E-mail e ou senhas incorretos')
+
+					}
+				}
+            });
+            
+            	app.controller('loginController', function($scope){
+				let usuariosCadastrados = [
+				  {
+					  login: 'admin',
+					  senha: '123'
+				  }];
+				
+				  let entrou = false;
+
+				  $scope.entrar = (login, senha) =>{
+					for(let usuario of usuariosCadastrados){
+					   if(login == usuario.login && senha == usuario.senha){
+							open('perfil.html', '_self');
+							entrou = true;
+					   } else if(entrou == false){
+							alert('E-mail e ou senhas incorretos');
+					   }
+					}
+				  }
+			    });
